@@ -110,7 +110,7 @@ class Parser {
 
             if(builtInExpected) {
                 // LHS was a number or a quoted string but we didn't get an operator
-                throw new DatalogException("[line " + scan.lineno() + "] Built-in predicate expected");
+                throw new DatalogException("[line " + scan.lineno() + "] Built-in predicate expected at " + scan.nextToken());
             } else if(scan.ttype != '(') {
                 throw new DatalogException("[line " + scan.lineno() + "] Expected '(' after predicate or an operator");
             }
