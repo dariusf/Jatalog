@@ -36,6 +36,9 @@ public class OutputUtils {
         StringBuilder sb = new StringBuilder("{");
         int s = bindings.size(), i = 0;
         for(String k : bindings.keySet()) {
+            if (k.startsWith("_")) {
+                continue;
+            }
             String v = bindings.get(k);
             sb.append(k).append(": ");
             if(v.startsWith("\"")) {

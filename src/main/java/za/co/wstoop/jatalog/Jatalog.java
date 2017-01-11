@@ -96,12 +96,13 @@ public class Jatalog {
      * @return true if the term is a variable
      */
     static boolean isVariable(String term) {
-        return Character.isUpperCase(term.charAt(0));
+        return Character.isUpperCase(term.charAt(0)) || term.charAt(0) == '_';
     }
     
     /* Specific tokenizer for our syntax */
 	private static StreamTokenizer getTokenizer(Reader reader) throws IOException {
 		StreamTokenizer scan = new StreamTokenizer(reader);
+		scan.wordChars('_', '_');
 		scan.ordinaryChar('.'); // '.' looks like a number to StreamTokenizer by default
 		scan.commentChar('%'); // Prolog-style % comments; slashSlashComments and slashStarComments can stay as well.
 		scan.quoteChar('"');
